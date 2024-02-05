@@ -6,7 +6,8 @@
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon -r tsconfig-paths/register index.ts"
+    "dev": "nodemon -r tsconfig-paths/register index.ts",
+    "dev:pro": "node tsconfig-paths/register index.ts"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.6",
