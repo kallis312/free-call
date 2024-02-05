@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 
-const mysql = new Sequelize('free_call', 'root', 'jacos6571', {
+const mysql = new Sequelize('free_call', 'root', 'Jacos@Cloud', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3306
