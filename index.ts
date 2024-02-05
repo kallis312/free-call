@@ -6,4 +6,4 @@ socket(httpServer)
 
 const PORT = process.env.PORT || 80
 
-httpServer.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+httpsServer.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
