@@ -1,8 +1,9 @@
-import { httpsServer } from '@Conf/express'
+import { httpsServer, httpServer } from '@Conf/express'
 import socket from '@Conf/socket'
 
 socket(httpsServer)
+socket(httpServer)
 
 const PORT = process.env.PORT || 80
 
-httpsServer.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+httpServer.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
