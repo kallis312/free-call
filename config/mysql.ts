@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 
-const mysql = new Sequelize('mysql://potaconfreecall@gmail.com:jacos6571@localhost:3306/free_call')
+const mysql = new Sequelize('mysql://root:Rasel#22386779@localhost:3306/free_call')
 
 const init = async () => {
   try {
