@@ -22,8 +22,8 @@ app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
-const privateKey = fs.readFileSync('cert/cert.key', 'utf8')
-const certificate = fs.readFileSync('cert/cert.crt', 'utf8')
+const privateKey = fs.readFileSync('cert/localhost.key', 'utf8')
+const certificate = fs.readFileSync('cert/localhost.crt', 'utf8')
 
 const credentials = { key: privateKey, cert: certificate }
 
