@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 
-const mysql = new Sequelize('mysql://root@localhost:3306/free_call')
+const mysql = new Sequelize('mysql://potaconfreecall@gmail.com:jacos6571@localhost:3306/free_call')
 
 const init = async () => {
   try {
@@ -9,6 +9,7 @@ const init = async () => {
     console.error(err instanceof Error ? err.message : 'Unkwon error.')
   }
 }
+
 mysql.authenticate().then(() => {
   init()
   console.log('Connection has been established successfully.');
