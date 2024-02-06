@@ -13,7 +13,6 @@ interface User {
 
 
 export default (io: any) => {
-
   io.on("connection", (socket: Socket) => {
     socket.emit("me", socket.id)
     socket.on('auth-login', (token: string) => login(socket, token))
