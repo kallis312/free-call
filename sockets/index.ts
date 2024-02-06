@@ -24,6 +24,7 @@ export default (io: any) => {
       if (toUser?.id) {
         const toSocket = io.users[toUser.id]
         const fromUser = await userModel.findOne({ where: { id: userId } })
+        console.log('call => ', fromUser?.id, toUser.id, toSocket)
         if (fromUser && toSocket)
           toSocket?.forEach((_s: string) => socket.to(_s).emit('s2c-call', {
             id: fromUser.id,
