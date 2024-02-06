@@ -9,7 +9,7 @@ const routes = Router()
 routes
   .get('/', requireAuth, getContacts)
   .get('/:phone', requireAuth, getContact)
-  .post('/', addContacts)
-  .delete('/:id', deleteContact)
+  .post('/', requireAuth, addContacts)
+  .delete('/:id', requireAuth, deleteContact)
 
 module.exports = routes

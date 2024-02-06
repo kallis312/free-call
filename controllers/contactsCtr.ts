@@ -28,7 +28,7 @@ export const getContact = async (req: Request, res: Response) => {
 
 export const addContacts = async (req: Request, res: Response) => {
   try {
-    const { contacts, userId, type } = addContactsReqValid.parse(req.body)
+    const { contacts, userId, type } = addContactsReqValid.parse({ ...req.body, userId: req.user?.id })
     const result = await contactsModel.bulkCreate(contacts.map(_c => ({ userId, type, ..._c })))
     res.status(201).json({
       message: `${result.length} contacts added successfully.`

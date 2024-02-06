@@ -59,7 +59,8 @@ export default (io: any) => {
 
     socket.on('c2s-leave', ({ to }: { to: string }) => {
       console.log('leave => ', to)
-      socket.to(to).emit('s2c-leave', { from: socket.id })
+      if (to)
+        socket.to(to).emit('s2c-leave', { from: socket.id })
     })
 
     socket.on('c2s-cancel', async ({ toPhone }: { toPhone: string }) => {
@@ -68,9 +69,10 @@ export default (io: any) => {
       if (toUser?.id) {
         const toSocketIds = io.users[toUser.id]
         console.log('cancel => ', toSocketIds)
-        toSocketIds.map((_socket: string) => {
-          socket.to(_socket).emit('s2c-cancel', { from: socket.id })
-        })
+        if (toSocketIds?.length)
+          toSocketIds.map((_socket: string) => {
+            socket.to(_socket).emit('s2c-cancel', { from: socket.id })
+          })
       }
     })
 
