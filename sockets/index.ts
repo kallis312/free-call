@@ -22,6 +22,7 @@ export default (io: any) => {
     socket.on('c2s-call', async ({ to, userId }: { to: string, userId: string }) => {
       const toUser = await userModel.findOne({ where: { phone: to } })
       if (toUser?.id) {
+        console.log(io.users)
         const toSocket = io.users[toUser.id]
         const fromUser = await userModel.findOne({ where: { id: userId } })
         console.log('call => ', fromUser?.id, toUser.id, toSocket)
