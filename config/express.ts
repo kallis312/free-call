@@ -17,6 +17,7 @@ declare global {
 dotenv.config()
 
 const app: Application = express()
+const httpApp: Application = express()
 
 app.use(cors())
 app.use(json())
@@ -41,7 +42,12 @@ app.get('/*', function (req, res) {
   res.sendFile(join(__dirname, '../public/index.html'));
 });
 
-export const httpServer = http.createServer(app)
+httpApp.get("*", (req, res, next) => {
+  res.redirect("https://" + req.headers.host + req.path);
+});
+
+
+export const httpServer = http.createServer(httpApp)
 
 export const httpsServer = https.createServer(credentials, app)
 
