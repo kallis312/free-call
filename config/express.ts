@@ -1,4 +1,5 @@
 import config from '@Conf/config'
+config()
 import { UsertModel } from '@/models/userModel'
 import routes from '@/routes'
 import cors from 'cors'
@@ -8,7 +9,6 @@ import http from 'http'
 import https from 'https'
 import { join } from 'path'
 
-config()
 
 declare global {
   namespace Express {
