@@ -21,7 +21,7 @@ export default () => {
     socket.on("disconnect", () => disconnect(socket))
 
     socket.on('c2s-call', async ({ to, userId }: { to: string, userId: string }) => {
-      console.log(io.users)
+      console.log('call:Users => ', io.users)
       const toUser = await userModel.findOne({ where: { phone: to } })
       if (toUser?.id) {
         const toSocket = io.users[toUser.id]
