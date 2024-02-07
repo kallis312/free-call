@@ -1,4 +1,5 @@
 import userModel from "@/models/userModel"
+import { io } from "@Conf/socket"
 import { disconnect, login } from "@Socket/authHandler"
 // import { model } from "mongoose"
 import { Socket } from "socket.io"
@@ -12,16 +13,16 @@ interface User {
 }
 
 
-export default (io: any) => {
+export default () => {
   io.on("connection", (socket: Socket) => {
     socket.emit("me", socket.id)
     socket.on('auth-login', (token: string) => login(socket, token))
     socket.on("disconnect", () => disconnect(socket))
 
     socket.on('c2s-call', async ({ to, userId }: { to: string, userId: string }) => {
+      console.log(io.users)
       const toUser = await userModel.findOne({ where: { phone: to } })
       if (toUser?.id) {
-        console.log(io.users)
         const toSocket = io.users[toUser.id]
         const fromUser = await userModel.findOne({ where: { id: userId } })
         console.log('call => ', fromUser?.id, toUser.id, toSocket)

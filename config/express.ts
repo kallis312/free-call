@@ -8,6 +8,8 @@ import fs from 'fs'
 import http from 'http'
 import https from 'https'
 import { join } from 'path'
+import passport from 'passport'
+import { jwtLogin } from '@Middleware/passport'
 
 
 declare global {
@@ -23,18 +25,19 @@ app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
+app.use(passport.initialize())
+
+passport.use(jwtLogin)
+
 const privateKey = fs.readFileSync('cert/localhost.key', 'utf8')
 const certificate = fs.readFileSync('cert/localhost.crt', 'utf8')
 
 const credentials = { key: privateKey, cert: certificate }
 
-require('@Middleware/passport')
-
 app.use("/" + process.env.API_PREFIX, routes);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '/public')));
-
 }
 
 app.use(express.static(join(__dirname, '../public')))

@@ -17,6 +17,6 @@ export default (app: any) => {
   io.users = {}
   io.socketToUser = {}
 
-  socket(io)
+  socket()
   return socketIO
 }
