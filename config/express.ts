@@ -4,7 +4,7 @@ import { jwtLogin } from '@Middleware/passport'
 import passport from 'passport'
 import { UsertModel } from '@/models/userModel'
 import routes from '@/routes'
-import compression from 'compression'
+// import compression from 'compression'
 import cors from 'cors'
 import express, { Application, json, urlencoded } from 'express'
 import fs from 'fs'
@@ -24,7 +24,7 @@ const httpApp: Application = express()
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
-app.use(compression())
+// app.use(compression())
 
 app.use(passport.initialize())
 passport.use(jwtLogin)
