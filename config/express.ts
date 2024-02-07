@@ -1,16 +1,16 @@
 import config from '@Conf/config'
 config()
+import { jwtLogin } from '@Middleware/passport'
+import passport from 'passport'
 import { UsertModel } from '@/models/userModel'
 import routes from '@/routes'
+import compression from 'compression'
 import cors from 'cors'
 import express, { Application, json, urlencoded } from 'express'
 import fs from 'fs'
 import http from 'http'
 import https from 'https'
 import { join } from 'path'
-import passport from 'passport'
-import { jwtLogin } from '@Middleware/passport'
-
 
 declare global {
   namespace Express {
@@ -24,9 +24,9 @@ const httpApp: Application = express()
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
+app.use(compression())
 
 app.use(passport.initialize())
-
 passport.use(jwtLogin)
 
 const privateKey = fs.readFileSync('cert/localhost.key', 'utf8')
@@ -34,16 +34,15 @@ const certificate = fs.readFileSync('cert/localhost.crt', 'utf8')
 
 const credentials = { key: privateKey, cert: certificate }
 
-app.use("/" + process.env.API_PREFIX, routes);
+app.use("/" + process.env.API_PREFIX, routes());
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(join(__dirname, '/public')));
+  app.use(express.static(join(__dirname, '../public')))
+  app.get('/*', function (req, res) {
+    res.sendFile(join(__dirname, '../public/index.html'));
+  });
 }
 
-app.use(express.static(join(__dirname, '../public')))
-app.get('/*', function (req, res) {
-  res.sendFile(join(__dirname, '../public/index.html'));
-});
 
 httpApp.get("*", (req, res, next) => {
   res.redirect("https://" + req.headers.host + req.path);

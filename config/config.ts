@@ -3,9 +3,8 @@ import { existsSync } from 'fs'
 
 const MODE = process.env.NODE_ENV || 'development'
 
-console.log(MODE)
-
 export default (): void => {
+  console.log(MODE)
   if (existsSync(".env." + MODE))
     config({ path: '.env.' + MODE })
 }

@@ -20,8 +20,8 @@ const init = async () => {
 }
 
 mysql.authenticate().then(() => {
-  init()
   console.log('Connection has been established successfully.');
+  init()
 }).catch((err) => {
   console.error('Unable to connect to the database: ', err);
 });

@@ -17,7 +17,8 @@ export const disconnect = (socket: any) => {
   if (userId) {
     const index = io.users[userId].findIndex((x: string) => x === socket.id)
     if (index > -1) {
-      io.users[userId].splice(index, 1)
+      const deleteUser = io.users[userId].splice(index, 1)
+      console.log('logout => ', userId, deleteUser)
       if (!io.users[userId].length)
         delete io.users[userId]
     }

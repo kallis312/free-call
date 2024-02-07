@@ -3,7 +3,7 @@ import { setUserReqValid } from '@Validate/userValid'
 import { Request, Response } from 'express'
 import { sign } from 'jsonwebtoken'
 
-const secretKey = process.env.JWT_SECRET || 'secret'
+const secretKey = process.env.JWT_SECRET || 'SecretSupterStar'
 
 export const setUser = async (req: Request, res: Response) => {
   try {

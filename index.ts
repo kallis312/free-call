@@ -1,4 +1,4 @@
-import { httpsServer, httpServer } from '@Conf/express'
+import { httpServer, httpsServer } from '@Conf/express'
 import socket from '@Conf/socket'
 
 socket(httpsServer)

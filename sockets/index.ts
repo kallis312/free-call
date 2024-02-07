@@ -17,6 +17,7 @@ export default () => {
   io.on("connection", (socket: Socket) => {
     socket.emit("me", socket.id)
     socket.on('auth-login', (token: string) => login(socket, token))
+    socket.on('auth-logout', () => disconnect(socket))
     socket.on("disconnect", () => disconnect(socket))
 
     socket.on('c2s-call', async ({ to, userId }: { to: string, userId: string }) => {
