@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build": "npx tsc",
-    "start": "set NODE_ENV=production&& ts-node -r tsconfig-paths/register index.ts ",
+    "start": "export NODE_ENV=production&& ts-node -r tsconfig-paths/register index.ts ",
+    "start:win": "set NODE_ENV=production&& ts-node -r tsconfig-paths/register index.ts ",
     "dev": "nodemon -r tsconfig-paths/register index.ts"
   },
   "dependencies": {
