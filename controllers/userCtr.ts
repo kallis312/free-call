@@ -22,6 +22,17 @@ export const setUser = async (req: Request, res: Response) => {
   }
 }
 
+export const updateUser = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params
+    const contact = req.body
+    const result = await userModel.update(contact, { where: { id } })
+    res.json({ message: 'Update Successfully.', result })
+  } catch (err) {
+    res.status(422).json({ message: err instanceof Error ? err.message : err })
+  }
+}
+
 
 const getToken = ({ id, phone, name, email }: any): string => {
   const token = 'JWT ' + sign({ id, phone, name, email }, secretKey)

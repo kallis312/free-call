@@ -1,20 +1,20 @@
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express, { Application, json, urlencoded } from 'express';
-import fs from 'fs';
-import http from 'http';
-import https from 'https';
-import routes from '@/routes';
+import config from '@Conf/config'
+import { UsertModel } from '@/models/userModel'
+import routes from '@/routes'
+import cors from 'cors'
+import express, { Application, json, urlencoded } from 'express'
+import fs from 'fs'
+import http from 'http'
+import https from 'https'
 import { join } from 'path'
-import { UsertModel } from '@/models/userModel';
+
+config()
 
 declare global {
   namespace Express {
     interface User extends UsertModel { }
   }
 }
-
-dotenv.config()
 
 const app: Application = express()
 const httpApp: Application = express()

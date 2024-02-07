@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import contactsModel from '@/models/contactsModel'
-import { addContactsReqValid, getContactsReqValid, getContactReqValid } from '@Validate/contactValid'
-import { UsertModel } from '@/models/userModel'
+import { addContactsReqValid, getContactsReqValid, getContactReqValid, updateContactsReqValid } from '@Validate/contactValid'
+// import { UsertModel } from '@/models/userModel'
 
 export const getContacts = async (req: Request, res: Response) => {
   try {
@@ -43,6 +43,16 @@ export const deleteContact = async (req: Request, res: Response) => {
     const { id } = req.params
     await contactsModel.destroy({ where: { id } })
     res.json({ message: `${id} contact deleted successfully.` })
+  } catch (err) {
+    res.status(422).json({ message: err instanceof Error ? err.message : err })
+  }
+}
+
+export const updateContact = async (req: Request, res: Response) => {
+  try {
+    const { contact, id } = updateContactsReqValid.parse({ ...req.body, ...req.params })
+    await contactsModel.update(contact, { where: { id } })
+    res.json({ message: `${id} contact updated successfully.` })
   } catch (err) {
     res.status(422).json({ message: err instanceof Error ? err.message : err })
   }

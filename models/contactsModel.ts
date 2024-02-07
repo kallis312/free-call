@@ -7,7 +7,7 @@ interface ContactModel extends Model<InferAttributes<ContactModel>, InferCreatio
   type: 'personal' | 'company'
   name: string
   phone?: string
-  email?: string
+  email?: string | null
 }
 
 export default db.define<ContactModel>('Contact', {
