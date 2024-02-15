@@ -1,9 +1,0 @@
-mkcert create-ca --organization "RTC CA" --country-code "JP" --state "Hockaido" --locality "Hockaido" --validity 365
-CA Private Key: ca.key
-CA Certificate: ca.crt
-
-mkcert create-cert --ca-key ca.key --ca-cert ca.crt --domains localhost:5173 --validity 365
-Private Key: cert.key
-Certificate: cert.crt
-
-
