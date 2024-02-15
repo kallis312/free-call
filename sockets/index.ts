@@ -1,17 +1,13 @@
 import userModel from "@/models/userModel"
 import { io } from "@Conf/socket"
 import { disconnect, login } from "@Socket/authHandler"
-// import { model } from "mongoose"
 import { Socket } from "socket.io"
-
-// const RecordModel = model('Record')
 
 interface User {
   userId: string
   video: boolean
   audio: boolean
 }
-
 
 export default () => {
   io.on("connection", (socket: Socket) => {
