@@ -1,0 +1,19 @@
+.bg-primary {
+  @apply bg-[#E6E6E6];
+}
+
+.container-primary {
+  @apply bg-[#E6E6E6] w-full overflow-auto flex flex-col;
+}
+
+.bg-green-primary {
+  background: linear-gradient(#38743a, #3A813B, #307031);
+}
+
+.home-bg {
+  background: linear-gradient(to right, #7c6b6e, #ad9f9f, #7c6b6e) no-repeat;
+}
+
+.red-grad-bg {
+  background-image: linear-gradient(to right, #eb2060, #ff3700);
+}

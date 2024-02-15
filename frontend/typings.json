@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "cordova-plugin-device-orientation": "registry:dt/cordova-plugin-device-orientation#0.0.0+20160819210047"
+  }
+}
