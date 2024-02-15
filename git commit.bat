@@ -1,3 +1,4 @@
+set /p "date" = date /t
 git add .
-git commit -m "Updated: `date +'date /t'`"
+git commit -m updated
 git push
