@@ -1,0 +1,1 @@
+import{j as s}from"./index-uT0cbUET.js";import{G as t}from"./GoBack-07RBzPcU.js";const e="/assets/contacts_title_img-DU8opR9P.png",o=()=>s.jsxs("div",{className:"bg-[#918283] w-full flex p-2 justify-between",children:[s.jsx("img",{src:e,alt:"",width:306}),s.jsx(t,{})]});export{o as I};
