@@ -11,7 +11,7 @@ export const addContactsReqValid = object({
   contacts: array(object({
     phone: string(),
     name: string(),
-    email: string().format('email')
+    email: string().format('email').nullable()
   }).strict().requiredFor('name').partialFor('email').partialFor('phone'))
 }).strict().required()
 
