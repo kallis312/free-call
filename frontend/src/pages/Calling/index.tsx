@@ -77,6 +77,7 @@ const Calling: FC = () => {
       })
 
       socket.on('s2c-leave', ({ from }: { from: string }) => {
+        console.log('Leave => ', from)
         load('/sounds/beep.wav', { autoplay: true, loop: true })
         setConnect(2)
         // ps[from].destroy()

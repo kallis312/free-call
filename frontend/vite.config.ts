@@ -10,6 +10,9 @@ export default defineConfig({
   server: {
     host: true,
   },
+  build: {
+    outDir: '../public'
+  },
   plugins: [react(), basicSsl(), nodePolyfills()],
   resolve: {
     alias: [{ find: '@', replacement: '/src' }],
